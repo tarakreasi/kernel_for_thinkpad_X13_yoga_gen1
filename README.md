@@ -16,15 +16,6 @@ It addresses specific hardware challenges on both LTS (5.15) and newer OEM (6.14
 | **Auto-Rotation** | ⚠️ Needs Script | ⚠️ Needs Script (Desktop dependent) |
 | **Performance** | 🟡 Standard | 🟢 Optimized |
 
-## 📖 Kisah Perjalanan & Debugging
-
-Dokumentasi lengkap mengenai _"Why & How"_ di balik solusi ini dapat dibaca di folder `post/`:
-
-1. [**Awal Mula: Frustrasi dengan Flicker**](post/post1_awal_mula.md) - Mengapa kernel bawaan Ubuntu tidak cukup.
-2. [**Diagnosa Mendalam**](post/post2_diagnosa_mendalam.md) - Menelusuri masalah i915, PSR, dan FBC.
-3. [**Solusi Permanen**](post/post3_solusi_permanen.md) - Cara hardcode driver untuk mematikan fitur bermasalah.
-4. [**Bonus: Debugging Rotasi & Suara**](post/story_debugging_autorotate_sound.md) - (Baru!) Perjuangan memperbaiki layar blank saat dilipat dan verifikasi audio di Kernel 6.14.
-
 ## 🚀 Cara Install (All-in-One)
 
 Kami telah menyederhanakan proses instalasi menjadi satu script utama untuk Kernel 6.14 OEM.
