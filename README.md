@@ -6,31 +6,36 @@ This repository documents the journey and technical solutions for running Linux 
 
 It addresses specific hardware challenges on both LTS (5.15) and newer OEM (6.14) kernels.
 
+> [!IMPORTANT]
+> **Update (Jan 2026):** We have decided to **revert to Kernel 5.15 (LTS)** as the daily driver. Despite extensive patching, the generic Screen Flickering issue on Kernel 6.14 OEM persists and remains unstable for daily use.
+
 ## ✅ Feature Support Matrix
 
 | Feature | Kernel 5.15 (LTS) | Kernel 6.14 (OEM) |
 | :--- | :--- | :--- |
-| **Screen Flicker** | ✅ Stable (Native) | ✅ **FIXED** (Patched i915) |
+| **Screen Flicker** | ✅ Stable (Native) | ❌ **UNSTABLE** (Persists) |
 | **WiFi / Bluetooth** | ⚠️ Needs Fix (Old Kernel vs New Firmware) | ✅ Native |
 | **Microphone** | ⚠️ Needs Fix (ALSA Config) | ✅ Native |
 | **Auto-Rotation** | ⚠️ Needs Script | ⚠️ Needs Script (Desktop dependent) |
 | **Performance** | 🟡 Standard | 🟢 Optimized |
 
-## 🚀 Cara Install (All-in-One)
+## 🚀 Cara Install (Recommended: Kernel 5.15)
 
-Kami telah menyederhanakan proses instalasi menjadi satu script utama untuk Kernel 6.14 OEM.
+Mengingat isu flickering yang masih ada di Kernel 6.14, kami sangat menyarankan untuk menggunakan **Kernel 5.15** untuk stabilitas maksimal.
 
-**Jalankan:**
+### Langkah 1: Install Kernel 5.15
+Pastikan Anda menggunakan Ubuntu 22.04 LTS atau distro yang mendukung kernel 5.15 LTS.
+
+### Langkah 2: Apply Fixes
+Jalankan script untuk memperbaiki WiFi/BT dan Microphone pada kernel 5.15:
+
 ```bash
-chmod +x setup_x13.sh
-sudo ./setup_x13.sh
+cd v5.15
+sudo ./fix_firmware.sh
+sudo ./fix_microphone.sh
 ```
 
-Script ini akan otomatis:
-1. Menginstall Kernel Linux OEM 6.14.
-2. Mengkonfigurasi GRUB (parameter anti-flicker).
-3. Memperbaiki setting Audio (disable power save).
-4. Memberi petunjuk langkah selanjutnya.
+*(Catatan: Script `setup_x13.sh` untuk 6.14 masih tersedia untuk keperluan testing/development, namun tidak disarankan untuk daily driver saat ini)*
 
 ---
 
