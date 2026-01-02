@@ -27,10 +27,9 @@ cp /etc/default/grub /etc/default/grub.bak.$(date +%F_%T)
 echo "      Backup tersimpan di /etc/default/grub.bak..."
 
 # Parameter baru:
-# i915.enable_psr=0     -> Mencegah layat berkedip (Panel Self Refresh off)
-# intel_iommu=igfx_off  -> Mencegah konflik memori grafik di kernel baru
-# Kami MENGHAPUS 'intel_idle.max_cstate=1' agar baterai Anda awet kembali!
-NEW_GRUB_CMD="GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash i915.enable_psr=0 intel_iommu=igfx_off\""
+# intel_idle.max_cstate=4 -> Mencegah flicker pada deep sleep state
+# (Parameter i915 lainnya sudah di-hardcode di kernel mod, jadi tidak perlu di GRUB)
+NEW_GRUB_CMD="GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash intel_idle.max_cstate=4\""
 
 # Ganti baris di file
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/'"$NEW_GRUB_CMD"'/' /etc/default/grub
